@@ -1,25 +1,10 @@
 	body
 	{
-		background-color: white;
+		background-color: grey;
 	}
 	#map
 	{
 		display: block;
 		margin: 30px auto;
 		background-color: white;
-	}
-	#player
-	{
-		display: block;
-		margin: -630px auto;
-	}
-	#enemy
-	{
-		display: block;
-		margin: 30px auto;
-	}
-	#fire
-	{
-		display: block;
-		margin: -630px auto;
 	}
