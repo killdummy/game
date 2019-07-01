@@ -17,14 +17,23 @@
 			
 		</div>
 	</div>
+	<div id="start">
+		<button onclick="startGame()">Начать</button>
+		<p>W A S D - управление</p>
+		<p>SPACE - использовать способность</p>
+		<p>Выбирайте способность на клавиши 1 2 3 </p>
+		<p>С убийством противников будет повышаться уровень персонажа, вместе с этим и скорость противников</p>
+		<p>Продержитесь как можно дольше! Удачи!!!</p>
+	</div>
 	<canvas id="map"></canvas>
-	<form name="form">
+	<form name="form" id="form">
 		<span>SCORE</span>
 		<input type="text" name="score1">
 		<span>LEVEL</span>
 		<input type="text" name="level">
 		<span>WEAPON</span>
 		<input type="text" name="weapon">
+		<input type="button" name="" value="Правила" onclick="stopGame()">
 	</form>
 </body>
 </html>
