@@ -35,11 +35,7 @@
 		background-image: url(https://i.playground.ru/i/user/302570/avatar.jpg?50x50);
 		margin-left: 20px;
 	}
-	#start{
-		color: white;
+	#help{
 		display: block;
-		width: 1200px;
-		height: 600px;
-		margin: 30px auto;
-		background-color: black;
+		color: white;
 	}
