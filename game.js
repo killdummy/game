@@ -184,6 +184,8 @@ function draw(){
 				enemies[j].y = Math.floor(Math.random(0, 0.8) * heightMap);
 			}
 			player.level = 1;
+			getScore(0);
+			document.form.level.value = player.level;
 		}
 		if (enemies[i].y > 500) {
 			enemies[i].x = Math.floor(Math.random() * widthMap) + widthMap;
