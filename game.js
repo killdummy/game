@@ -179,7 +179,10 @@ function draw(){
 		if (enemies[i].x < 0) {
 			alert(score);
 			score = 0;
-			document.location.reload(true);
+			for (j = 0; j < enemies.length; j++){
+				enemies[j].x = Math.floor(Math.random() * widthMap) + widthMap;
+				enemies[j].y = Math.floor(Math.random(0, 0.8) * heightMap);
+			}
 		}
 		if (enemies[i].y > 500) {
 			enemies[i].x = Math.floor(Math.random() * widthMap) + widthMap;
