@@ -183,6 +183,7 @@ function draw(){
 				enemies[j].x = Math.floor(Math.random() * widthMap) + widthMap;
 				enemies[j].y = Math.floor(Math.random(0, 0.8) * heightMap);
 			}
+			player.level = 1;
 		}
 		if (enemies[i].y > 500) {
 			enemies[i].x = Math.floor(Math.random() * widthMap) + widthMap;
