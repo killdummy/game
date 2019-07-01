@@ -25,23 +25,10 @@ var requestAnimFrame = window.requestAnimationFrame ||
 						window.msRequestAnimationFrame;
 
 function init(){
+	document.getElementById("help").style.display = "none";
+
 	map = document.getElementById("map");
 	ctxMap = map.getContext("2d");
-
-	console.log("2".charCodeAt(0));
-
-	if (localStorage.getItem("play") != '1'){
-		document.getElementById("menuSkills").style.display = "none";
-		document.getElementById("map").style.display = "none";
-		document.getElementById("form").style.display = "none";
-		document.getElementById("start").style.display = "block";
-	}else{
-		document.getElementById("menuSkills").style.display = "flex";
-		document.getElementById("map").style.display = "block";
-		document.getElementById("form").style.display = "block";
-		document.getElementById("start").style.display = "none";
-		startLoop();
-	}
 
 	map.width = widthMap;
 	map.height = heightMap;
@@ -49,6 +36,7 @@ function init(){
 	getScore(0);
 	document.form.level.value = player.level;
 	document.form.weapon.value = "Fireball";
+	startLoop();
 
 	spawnOpponent(6);
 
@@ -82,14 +70,12 @@ function init(){
 	});
 }
 
-function startGame(){
-	localStorage.setItem("play", 1);
-	document.location.reload(true);
-}
-
-function stopGame(){
-	localStorage.setItem("play", 0);
-	document.location.reload(true);
+function help(){
+	if (document.getElementById("help").style.display == "block"){
+		document.getElementById("help").style.display = "none";
+	}else{
+		document.getElementById("help").style.display = "block";
+	}
 }
 
 function getScore(record){
