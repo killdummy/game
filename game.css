@@ -1,3 +1,4 @@
+
 	body
 	{
 		background-color: grey;
@@ -7,4 +8,30 @@
 		display: block;
 		margin: 30px auto;
 		background-color: white;
+	}
+	#menuSkills{
+		margin-left: 150px; 
+		position: absolute;
+		display: flex;
+		flex-direction: row;
+	}
+	#one{
+		position: relative;
+		width: 50px;
+		height: 50px;
+		background-image: url(https://cdn-media.threadless.com/cache/profile_photos/28/3660578_profile_picture_50x50.jpg);
+	}
+	#two{
+		position: relative;
+		width: 50px;
+		height: 50px;
+		background-image: url(https://wow.zamimg.com/images/wow/icons/large/ability_warlock_backdraft.jpg);
+		margin-left: 20px;
+	}
+	#three{
+		position: relative;
+		width: 50px;
+		height: 50px;
+		background-image: url(https://i.playground.ru/i/user/302570/avatar.jpg?50x50);
+		margin-left: 20px;
 	}
