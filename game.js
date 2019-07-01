@@ -30,13 +30,26 @@ function init(){
 
 	console.log("2".charCodeAt(0));
 
+	if (localStorage.getItem("play") != '1'){
+		document.getElementById("menuSkills").style.display = "none";
+		document.getElementById("map").style.display = "none";
+		document.getElementById("form").style.display = "none";
+		document.getElementById("start").style.display = "block";
+	}else{
+		document.getElementById("menuSkills").style.display = "flex";
+		document.getElementById("map").style.display = "block";
+		document.getElementById("form").style.display = "block";
+		document.getElementById("start").style.display = "none";
+		startLoop();
+	}
+
 	map.width = widthMap;
 	map.height = heightMap;
 
 	getScore(0);
 	document.form.level.value = player.level;
 	document.form.weapon.value = "Fireball";
-	startLoop();
+
 	spawnOpponent(6);
 
 	addEventListener("keydown", function(event){
@@ -67,6 +80,16 @@ function init(){
 				break;
 		}
 	});
+}
+
+function startGame(){
+	localStorage.setItem("play", 1);
+	document.location.reload(true);
+}
+
+function stopGame(){
+	localStorage.setItem("play", 0);
+	document.location.reload(true);
 }
 
 function getScore(record){
