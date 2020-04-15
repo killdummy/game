@@ -3,6 +3,7 @@ var score = 0, timer = 20;
 var timerDiv, scoreDiv;
 var canvas, context;
 var isCursor = false;
+var newKey = 0;
 var rectangle = {
 	x: 50,
 	y: 50,
@@ -19,20 +20,14 @@ function init(){
 	timerDiv = document.getElementById("valueTimer");
 	canvas.addEventListener("mousemove", setMousePosition, false);
 	addEventListener("keydown", function(event){
-		if (event.keyCode == rectangle.key && mouseX > rectangle.x && mouseX < rectangle.x + rectangle.pW && mouseY > rectangle.y && mouseY < rectangle.y + rectangle.pH){
+		newKey = event.keyCode;
+	});
+	addEventListener("mouseover", function(event){
+		if (newKey == rectangle.key && event.clientX > rectangle.x && event.clientX < rectangle.x + rectangle.pW && event.clientY > rectangle.y && event.clientY < rectangle.y + rectangle.pH){
 			rectangle.x = Math.floor(Math.random() * 230);
 			rectangle.y = Math.floor(Math.random() * 100);
 			switchSetting();
 			score++;
-		}
-		if (event.keyCode == 27){
-			if (isCursor){
-				isCursor = false
-				canvas.style.cursor = "none";
-			}else{
-				isCursor = true;
-				canvas.style.cursor = "auto";
-			}
 		}
 	});
 }
@@ -50,12 +45,7 @@ function update() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
 	scoreDiv.innerHTML = score;
-
-  	context.beginPath();
-  	context.arc(mouseX, mouseY, 3, 0, 2 * Math.PI, true);
-  	context.fillStyle = "#000000";
-  	context.fill();
-  	context.closePath();
+	
   	context.beginPath();
   	context.rect(rectangle.x, rectangle.y, rectangle.pW, rectangle.pH);
   	context.fillStyle = rectangle.color;
