@@ -3,10 +3,25 @@
 <head>
 	<title>Millenium</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="game.css">
-	<script type="text/javascript" src="game.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
 </head>
 <body>
+	<div id="rule">
+		<p>Правила игры:</p>
+		<p>На поле будет появляться квадрат разных цветов</p>
+		<p>Нужно на него навести и нажать на ту клавишу, с какой буквы начинается цвет квадрата</p>
+		<p>Пример: </p>
+		<p>R- red</p>
+		<p>G - green</p>
+		<p>B - blue</p>
+		<p>ESC - показать курсор</p>
+		<button onclick="start()" id="startButton">Начать</button>
+	</div>
 	<canvas id="canvas"></canvas>
+	<div id="menu">
+		<p id="score">score: <span id="valueScore">0</span></p>
+		<p id="timer">time: <span id="valueTimer">0</span></p>
+	</div>
 </body>
 </html>
