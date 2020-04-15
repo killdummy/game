@@ -1,7 +1,29 @@
-
+	
 	#canvas
 	{
-		width: 1000px;
+		width: 100%;
 		height: 600px;
-		border: #333 10px solid;
+		border: #333 2px solid;
+		cursor: none;
+		display: none;
+	}
+	#menu
+	{
+		display: flex;
+		justify-content: space-around;
+		flex-direction: row;
+	}
+	#rule
+	{
+		width: 100%;
+		height: 80%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+	#startButton
+	{
+		width: 80px;
+		margin: 0 auto;
 	}
