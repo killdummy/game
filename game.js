@@ -1,93 +1,80 @@
 window.onload = init;
-var score = 0, timer = 20;
-var timerDiv, scoreDiv;
-var canvas, context;
-var isCursor = false;
-var newKey = 0;
-var rectangle = {
-	x: 50,
-	y: 50,
-	pW: 20,
-	pH: 20,
-	color: "red",
-	key: 82
-}
+var score = 0, timer = 20, key = 0;
+var timerDiv, scoreDiv, rectangle, gamearea, color = "red";
+var onKey;
 
 function init(){
-	canvas = document.getElementById("canvas");
-	context = canvas.getContext('2d');
+	gamearea = document.getElementById("gamearea");
 	scoreDiv = document.getElementById("valueScore");
 	timerDiv = document.getElementById("valueTimer");
-	canvas.addEventListener("mousemove", setMousePosition, false);
-	addEventListener("keydown", function(event){
-		newKey = event.keyCode;
-	});
-	addEventListener("mouseover", function(event){
-		if (newKey == rectangle.key && event.clientX > rectangle.x && event.clientX < rectangle.x + rectangle.pW && event.clientY > rectangle.y && event.clientY < rectangle.y + rectangle.pH){
-			rectangle.x = Math.floor(Math.random() * 230);
-			rectangle.y = Math.floor(Math.random() * 100);
+	rectangle = document.getElementById("rectangle");
+	rectangle.style.top = "200px";
+	rectangle.style.left = "500px";
+
+	document.onkeydown = function(event){
+		if (event.keyCode == 82 && onKey && color == "red"){
 			switchSetting();
-			score++;
 		}
-	});
+		if (event.keyCode == 66 && onKey && color == "blue"){
+			switchSetting();
+		}
+		if (event.keyCode == 71 && onKey && color == "green"){
+			switchSetting();
+		}
+	}
+
 }
 
-var canvasPos = getPosition(canvas);
-var mouseX = 0;
-var mouseY = 0;
-
-function setMousePosition(e) {
-	mouseX = e.clientX - canvasPos.x;
- 	mouseY = e.clientY - canvasPos.y;
+function test1(){
+	onKey = true;
 }
 
-function update() {
-	context.clearRect(0, 0, canvas.width, canvas.height);
-
-	scoreDiv.innerHTML = score;
-	
-  	context.beginPath();
-  	context.rect(rectangle.x, rectangle.y, rectangle.pW, rectangle.pH);
-  	context.fillStyle = rectangle.color;
-  	context.fill();
-  	requestAnimationFrame(update);
-}
-
-function getPosition(el) {
-  	var xPosition = 0;
-  	var yPosition = 0;
-
-  	while (el) {
-    	xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-   		yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
-    	el = el.offsetParent;
-  	}
-  	return {
-    	x: xPosition,
-   	 	y: yPosition
-  	};
+function test2(){
+	onKey = false;
 }
 
 function switchSetting(){
+	score++;
+	scoreDiv.innerHTML = score;
+	var left, right, top, bottom;
+	left = Math.floor(Math.random() * 800) + "px";
+	right = Math.floor(Math.random() * 800) + "px";
+	top = Math.floor(Math.random() * 400) + "px";
+	bottom = Math.floor(Math.random() * 400) + "px";
 	var arr = [{color: "red", key: 82}, {color: "blue", key: 66}, {color: "green", key: 71}];
-	switch(Math.floor(Math.random() * 10)){
+	switch(Math.floor(Math.random() * 9)){
+		case 0:
 		case 1:
 		case 2:
-		case 3:
-			rectangle.color = arr[0].color;
-			rectangle.key = arr[0].key;
+			color = "red";
+			rectangle.style.bottom = bottom;
+			rectangle.style.top = top;
+			rectangle.style.right = right;
+			rectangle.style.left = left;
+			rectangle.style.backgroundColor = arr[0].color;
+			key = arr[0].key;
 			break;
+		case 3:
 		case 4:
 		case 5:
-		case 6:
-			rectangle.color = arr[1].color;
-			rectangle.key = arr[1].key;
+			color = "blue";
+			rectangle.style.bottom = bottom;
+			rectangle.style.top = top;
+			rectangle.style.right = right;
+			rectangle.style.left = left;
+			rectangle.style.backgroundColor = arr[1].color;
+			key = arr[1].key;
 			break;
+		case 6:
 		case 7:
 		case 8:
-		case 9:
-			rectangle.color = arr[2].color;
-			rectangle.key = arr[2].key;
+			color = "green";
+			rectangle.style.bottom = bottom;
+			rectangle.style.top = top;
+			rectangle.style.right = right;
+			rectangle.style.left = left;
+			rectangle.style.backgroundColor = arr[2].color;
+			key = arr[2].key;
 			break;
 	}
 }
@@ -96,15 +83,19 @@ function tick(){
 	timer--;
 	timerDiv.innerHTML = timer;
 	if (timer == 0) {
-		alert(score);
+		alert("Количество очков " + score);
 		score = 0;
 		timer = 20;
+		scoreDiv.innerHTML = score;
 	}
 }
 
 function start(){
-	document.getElementById("canvas").style.display = "block";
+	document.getElementById("gamearea").style.display = "block";
 	document.getElementById("rule").style.display = "none";
-	update();
 	setInterval(tick, 1000);
+}
+
+function onOver(){
+
 }
