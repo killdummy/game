@@ -1,11 +1,4 @@
 	
-	#canvas
-	{
-		width: 100%;
-		height: 600px;
-		border: #333 2px solid;
-		display: none;
-	}
 	#menu
 	{
 		display: flex;
@@ -25,4 +18,22 @@
 	{
 		width: 80px;
 		margin: 0 auto;
+	}
+	#rectangle
+	{
+		background-color: red;
+		width: 50px;
+		height: 50px;
+		position: relative;
+	}
+	#gamearea
+	{
+		display: none;
+		width: 80%;
+		height: 500px;
+		margin: 0 auto;
+	}
+	body
+	{
+		color: black;
 	}
